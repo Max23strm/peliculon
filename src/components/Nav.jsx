@@ -9,10 +9,10 @@ function Nav() {
     lib.map(e=>{
         e.Genre.split(" ").map(e=>{
             if(e[e.length-1]===","){
-                e=(e.slice(0,-1))
+                return e=(e.slice(0,-1))
             }
             if(!genero.includes(e)){
-                genero.push(e)
+                return genero.push(e)
             }
         })
     })
@@ -24,12 +24,12 @@ function Nav() {
     return (
         <nav className={` h-full fixed transition-[width] ${boton ? 'w-2/12 bg-[#121920] ' : "w-12 bg-[#19242E]"} overflow-hidden flex flex-row align-top  ml-0`}>
             <button onClick={togle} className="hover:text-white mt-3 px-1 h-fit"><img src={icon} className="w-10" alt=""/></button>
-            <section className={`ml-5 mt-5 transition-[width] ${!boton?"hidden":"block"}`}>
+            <section className={`ml-5 mt-4 transition-[width] ${!boton?"hidden":"block"}`}>
 
-                <h3 className={`font-bold text-2xl w-9/12mb-5 text-gray-100 `}>Peliculon</h3>
-                <section className='flex flex-col'>
+                <Link className={`font-bold text-2xl w-9/12mb-5 text-gray-100 `} to={"/"}>Peliculon</Link>
+                <section className='flex mt-10 flex-col'>
                     <Link className='my-2 text-gray-100 hover:text-white font-bold' to={"/"} onClick={togle}>Inicio</Link>
-                    <Link className='my-2 text-gray-100 hover:text-white font-bold' to={""} onClick={togle}>Favoritos</Link>
+                    <Link className='my-2 text-gray-100 hover:text-white font-bold' to={"/fav"} onClick={togle}>Favoritos</Link>
                     
                     <details className=' my-2 flex flex-col text-gray-100 hover:text-white font-bold transition-transform'>
                     <summary className='hover:cursor-pointer'>
@@ -41,6 +41,7 @@ function Nav() {
                         </Link>
                     })}
                     </details>
+                    <Link className='my-2 text-[#1f2a36] hover:text-white font-bold' to={"/about"}>About</Link>
                 </section>
             </section>
         </nav>
