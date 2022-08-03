@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Card from '../components/Card'
 import lib from '../data/lib.json'
+import useFavorites from '../hooks/useFavorites'
 function Category( ) {
+  const {agregarAFavoritos}=useFavorites()
 const [mostrador,setMostrador]=useState([])
 
   var param=useParams().category
@@ -31,11 +33,11 @@ const [mostrador,setMostrador]=useState([])
     setMostrador([...muestra])
   }, 2000);
   return (
-    <section className='w-11/12 mx-auto min-h-screen'>
+    <section className='w-11/12 mx-auto min-h-screen z-10 mb-20'>
       <h2 className='font-bold text-5xl pt-5 mb-5 text-[#0296D6]'>{param}</h2>
       <section className={`grid ${mostrador.length?"grid-cols-4 gap-5":"place-content-center"} `}>
         {!mostrador.length?<img src="https://s2.svgbox.net/loaders.svg?ic=grid&color=c0bfbc" className='w-20 grid-center mt-52' alt='cargando'/>:mostrador.map(e=>{
-          return <Card data={e} key={e.imdbID}/>
+          return <Card data={e} agregarAFavoritos={agregarAFavoritos} key={e.imdbID}/>
         })}
       </section>
     </section>

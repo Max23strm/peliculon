@@ -4,10 +4,22 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    // colors:{
-    //   amazonDarkBlue: "#1A242E",
-    // },
-    extend: {},
+    
+    extend: {
+      animation: {
+        "fade-in": "fade-in 2.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both"
+      },
+      keyframes: {
+        "fade-in": {
+        "0%": {
+          opacity: 0
+        },
+        "100%" :{
+          opacity: 1
+        }
+}}
+
+    },
   },
   plugins: [],
 }
