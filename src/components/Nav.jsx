@@ -3,9 +3,11 @@ import lib from '../data/lib.json'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Buscador from './Buscador'
+import Burguer from '../UI/Burguer'
+import Close from '../UI/Close'
 function Nav() {
     const [boton, setBoton]=useState(false)
-    const [icon, setIcon]=useState("https://s2.svgbox.net/materialui.svg?ic=menu&color=c0bfbc")
+    const [icon, setIcon]=useState(<Burguer/>)
     var genero=["Movies", "Series" ]
     lib.map(e=>{
         return e.Genre.split(" ").map(e=>{
@@ -18,7 +20,7 @@ function Nav() {
         })
     })
     const togle = () =>{
-        !boton?setIcon("https://s2.svgbox.net/materialui.svg?ic=close&color=c0bfbc"):setIcon("https://s2.svgbox.net/materialui.svg?ic=menu&color=c0bfbc")
+        !boton?setIcon(<Close/>):setIcon(<Burguer/>)
         setBoton(!boton)
     }
     
@@ -26,14 +28,14 @@ function Nav() {
         <nav className={` h-full 
         fixed 
         transition-[width] 
-        ${boton ? 'w-2/12 bg-[#121920] ' : "w-12 bg-[#19242E]"} 
+        ${boton ? 'w-96 bg-[#121920] ' : "w-12 bg-[#19242E]"} 
         overflow-hidden 
         flex 
         flex-row 
         align-top  
         ml-0 
         z-50`}>
-            <button onClick={togle} className="hover:text-white mt-3 px-1 h-fit"><img src={icon} className="w-10" alt=""/></button>
+            <button onClick={togle} className="hover:text-white mt-3 px-1 h-fit">{icon}</button>
             <section className={`ml-5 mt-4 transition-[width] ${!boton?"hidden":"block"}`}>
 
                 <Link className={`font-bold text-2xl w-9/12mb-5 text-gray-100 `} to={"/"}>Peliculon</Link>

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+import Spinner from '../UI/Spinner'
 import Estrella from './Estrella'
 function Card({data, agregarAFavoritos}) {
   return (
     <article className='relative h-fit z-20'>
       <Link to={`/${data.imdbID}`} className="p-5 rounded-md flex flex-col justify-between bg-[#19242E] bg-opacity-40 text-gray-100">
-        <img src={data.Poster} alt={`Poster de ${data.Title}`} className="text-center" />
+          {data.Poster!=="N/A"?<img src={data.Poster} alt={`Poster de ${data.Title}`} className="text-center" />:<Spinner css={"mx-auto my-56"}/>}
         <section className="flex flex-row justify-between relative  mt-2">
             <h3 className='font-bold text-xl' >{data.Title}</h3>
         </section>
