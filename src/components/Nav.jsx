@@ -1,7 +1,7 @@
-import React from 'react'
+
 import lib from '../data/lib.json'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Buscador from './Buscador'
 import Burguer from '../UI/Burguer'
 import Close from '../UI/Close'
@@ -19,11 +19,15 @@ function Nav() {
             }
         })
     })
+    
     const togle = () =>{
         !boton?setIcon(<Close/>):setIcon(<Burguer/>)
         setBoton(!boton)
     }
     
+    useEffect(() => {
+        setBoton(false)
+    }, [])
     return (
         <nav className={` h-full 
         fixed 
@@ -53,7 +57,7 @@ function Nav() {
                         </Link>
                     })}
                     </details>
-                    <Buscador/>
+                    <Buscador togle={togle}/>
                     <Link className='my-2 text-[#1f2a36] hover:text-white font-bold' to={"/about"}>About</Link>
                 </section>
             </section>

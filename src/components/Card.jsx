@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import Spinner from '../UI/Spinner'
 import Estrella from './Estrella'
+
+
 function Card({data, agregarAFavoritos}) {
   return (
     <article className='relative h-fit z-20'>

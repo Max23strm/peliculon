@@ -11,6 +11,7 @@ function Buscado() {
       .then(response=>response.json())
       .then(json=>setBusqueda(json.Search))
     },[termino])
+    
   return (
     <div className='min-h-screen mx-auto w-11/12'>
       <section className='ml-12'>
